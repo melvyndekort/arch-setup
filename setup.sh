@@ -2,7 +2,7 @@
 
 ## Configure all preconditions for further setups
 setup_pre_conditions() {
-  sudo pacman -Sy --needed base-devel
+  sudo pacman -Sy --noconfirm --needed base-devel
 
   if ! command -v yay; then
     git clone https://aur.archlinux.org/yay.git /tmp/yay.git
@@ -15,49 +15,49 @@ setup_pre_conditions() {
 
 ## Install all applications for a base CLI only system
 setup_base() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --needed - < pkglist-base.txt
+  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-base.txt
 
   pip install --upgrade --user -r ~/bin/requirements.txt
 }
 
 ## Install all applications for development purposes
 setup_development() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --needed - < pkglist-devel.txt
+  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-devel.txt
 
   sudo systemctl enable NetworkManager.service
 }
 
 ## Install all applications needed for any UI option
 setup_ui_base() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --needed - < pkglist-ui-base.txt
+  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-ui-base.txt
 }
 
 ## Install all applications for suckless dwm
 setup_ui_dwm() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --needed - < pkglist-dwm.txt
+  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-dwm.txt
 
   sudo systemctl enable lightdm.service
 }
 
 ## Install all applications for i3
 setup_ui_i3() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --needed - < pkglist-i3.txt
+  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-i3.txt
 
   sudo systemctl enable lightdm.service
 }
 
 ## Install all applications for Gnome
 setup_ui_gnome() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --needed - < pkglist-gnome-1.txt
+  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-gnome-1.txt
 
-  sudo pacman -Rcnsu - < pkglist-gnome-2.txt
+  yay -Rcnsu --sudoloop --noconfirm - < pkglist-gnome-2.txt
 
   sudo systemctl enable gdm.service
 }
 
 ## Install all extra applications
 setup_extra() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --needed - < pkglist-extra.txt
+  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-extra.txt
 }
 
 ## Configure dotfiles
@@ -76,6 +76,10 @@ setup_dotfiles() {
   chmod 600 $HOME/.ssh/config $HOME/.ssh/config.d/*
 }
 
+## Install precondition to run the rest of this script
+if ! command dialog; then
+  pacman -Sy --noconfirm dialog
+fi
 
 ## Ask the user for input which groups he wants to install
 cmd=(dialog --separate-output --checklist "Select which groups you want to install:" 22 76 16)
