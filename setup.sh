@@ -77,8 +77,8 @@ setup_dotfiles() {
 }
 
 ## Install precondition to run the rest of this script
-if ! command dialog; then
-  pacman -Sy --noconfirm dialog
+if ! command -v dialog; then
+  sudo pacman -Sy --noconfirm dialog
 fi
 
 ## Ask the user for input which groups he wants to install
