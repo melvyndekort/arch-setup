@@ -16,14 +16,12 @@ setup_pre_conditions() {
 ## Install all applications for a base CLI only system
 setup_base() {
   yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-base.txt
-
-  pip install --upgrade --user -r ~/bin/requirements.txt
 }
 
 ## Install all applications for development purposes
 setup_development() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-devel.txt
-
+  pip install --upgrade --user -r pkglist-pip.txt
+  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-development.txt
   sudo systemctl enable NetworkManager.service
 }
 
@@ -35,29 +33,25 @@ setup_ui_base() {
 ## Install all applications for suckless dwm
 setup_ui_dwm() {
   yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-dwm.txt
-
   sudo systemctl enable lightdm.service
 }
 
 ## Install all applications for i3
 setup_ui_i3() {
   yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-i3.txt
-
   sudo systemctl enable lightdm.service
 }
 
 ## Install all applications for Gnome
 setup_ui_gnome() {
   yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-gnome-1.txt
-
   yay -Rcnsu --sudoloop --noconfirm - < pkglist-gnome-2.txt
-
   sudo systemctl enable gdm.service
 }
 
-## Install all extra applications
-setup_extra() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-extra.txt
+## Install all work related applications
+setup_work() {
+  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-work.txt
 }
 
 ## Configure dotfiles
@@ -89,7 +83,7 @@ options=(1 "Pre conditions" off
          4 "i3wm" off
          5 "GNOME" off
          6 "Development" off
-         7 "Extra" off
+         7 "work" off
          8 "Dotfiles" off)
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -101,22 +95,25 @@ do
             setup_pre_conditions
             ;;
         2)
-            setup_ui_base
+            setup_base
             ;;
         3)
+            setup_ui_base
             setup_ui_dwm
             ;;
         4)
+            setup_ui_base
             setup_ui_i3
             ;;
         5)
+            setup_ui_base
             setup_ui_gnome
             ;;
         6)
             setup_development
             ;;
         7)
-            setup_extra
+            setup_work
             ;;
         8)
             setup_dotfiles

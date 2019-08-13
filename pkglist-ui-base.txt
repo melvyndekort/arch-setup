@@ -12,7 +12,12 @@ mkvtoolnix-gui
 nerd-fonts-hack
 rdesktop
 remmina
+scrcpy
+skypeforlinux-stable-bin
+slack-desktop
+spotify
 st
+sublime-text-dev
 surf
 ttf-ms-fonts
 virt-manager

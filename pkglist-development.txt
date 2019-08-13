@@ -1,0 +1,10 @@
+aws-ecs-cli
+gradle
+insomnia
+intellij-idea-ultimate-edition
+intellij-idea-ultimate-edition-jre
+jdk-openjdk
+maven
+terraform
+tflint
+visual-studio-code-bin

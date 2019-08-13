@@ -1,0 +1,5 @@
+awscli
+awsume
+aws-sam-cli
+aws-encryption-sdk-cli
+bzt
