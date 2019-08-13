@@ -1,0 +1,15 @@
+autorandr
+brightnessctl
+compton
+dmenu
+dwm
+feh
+lightdm
+lightdm-gtk-greeter
+network-manager-applet
+pavucontrol
+xautolock
+xorg-server
+xorg-xprop
+xorg-xrdb
+xss-lock

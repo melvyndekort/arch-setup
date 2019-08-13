@@ -1,0 +1,17 @@
+aws-ecs-cli
+dropbox
+forticlientsslvpn
+insomnia
+intellij-idea-ultimate-edition
+intellij-idea-ultimate-edition-jre
+jxplorer
+scrcpy
+oracle-sqldeveloper
+ppd-toshiba-estudio5560c
+skypeforlinux-stable-bin
+slack-desktop
+spotify
+sublime-text-dev
+tflint
+visual-studio-code-bin
+woeusb
