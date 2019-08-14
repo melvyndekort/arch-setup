@@ -58,12 +58,12 @@ setup_work() {
 setup_dotfiles() {
   cd $HOME
 
-  rm -rf $HOME/.shellcfg $HOME/.git
+  rm -rf $HOME/.dotfiles $HOME/.git
 
-  git init --separate-git-dir=$HOME/.shellcfg $HOME
+  git init --separate-git-dir=$HOME/.dotfiles $HOME
   git config status.showUntrackedFiles no
 
-  git remote add origin git@github.com:melvyndekort/shellcfg.git
+  git remote add origin git@github.com:melvyndekort/dotfiles.git
   git fetch
   git checkout -f -t origin/master
 
