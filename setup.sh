@@ -77,14 +77,13 @@ fi
 
 ## Ask the user for input which groups he wants to install
 cmd=(dialog --separate-output --checklist "Select which groups you want to install:" 22 76 16)
-options=(1 "Pre conditions" off
-         2 "Base" off
-         3 "Suckless DWM" off
-         4 "i3wm" off
-         5 "GNOME" off
-         6 "Development" off
-         7 "work" off
-         8 "Dotfiles" off)
+options=(1 "Base" off
+         2 "Suckless DWM" off
+         3 "i3" off
+         4 "GNOME" off
+         5 "Development" off
+         6 "Work" off
+         7 "Dotfiles" off)
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
 
@@ -93,29 +92,32 @@ do
     case $choice in
         1)
             setup_pre_conditions
-            ;;
-        2)
             setup_base
             ;;
-        3)
+        2)
+            setup_pre_conditions
             setup_ui_base
             setup_ui_dwm
             ;;
-        4)
+        3)
+            setup_pre_conditions
             setup_ui_base
             setup_ui_i3
             ;;
-        5)
+        4)
+            setup_pre_conditions
             setup_ui_base
             setup_ui_gnome
             ;;
-        6)
+        5)
+            setup_pre_conditions
             setup_development
             ;;
-        7)
+        6)
+            setup_pre_conditions
             setup_work
             ;;
-        8)
+        7)
             setup_dotfiles
             ;;
     esac
