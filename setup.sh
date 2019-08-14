@@ -33,12 +33,14 @@ setup_ui_base() {
 ## Install all applications for suckless dwm
 setup_ui_dwm() {
   yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-dwm.txt
+  sudo cp configs/xorg/* /etc/X11/xorg.conf.d/
   sudo systemctl enable lightdm.service
 }
 
 ## Install all applications for i3
 setup_ui_i3() {
   yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-i3.txt
+  sudo cp configs/xorg/* /etc/X11/xorg.conf.d/
   sudo systemctl enable lightdm.service
 }
 
