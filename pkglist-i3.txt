@@ -11,6 +11,7 @@ lightdm
 lightdm-gtk-greeter
 network-manager-applet
 pavucontrol
+scrot
 slock
 xautolock
 xorg-server
