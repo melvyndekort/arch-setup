@@ -1,13 +1,13 @@
 autorandr
 brightnessctl
 compton
-dmenu
 dwm
 feh
 lightdm
 lightdm-gtk-greeter
 network-manager-applet
 pavucontrol
+rofi
 scrot
 slock
 xautolock

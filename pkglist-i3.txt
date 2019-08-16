@@ -1,7 +1,6 @@
 autorandr
 brightnessctl
 compton
-dmenu
 feh
 i3-gaps
 i3blocks
@@ -11,6 +10,7 @@ lightdm
 lightdm-gtk-greeter
 network-manager-applet
 pavucontrol
+rofi
 scrot
 slock
 xautolock
