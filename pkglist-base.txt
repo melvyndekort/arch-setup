@@ -40,6 +40,7 @@ openvpn
 pacman-contrib
 pdftk-bin
 podman
+polkit
 python
 python2
 python-pip
