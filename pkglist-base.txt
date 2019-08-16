@@ -49,6 +49,7 @@ ranger
 ripgrep
 rsync
 samba
+stress
 tcpdump
 tmux
 traceroute
