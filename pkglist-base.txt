@@ -20,6 +20,7 @@ flac
 git
 htop
 id3v2
+iotop
 iptables
 jre-openjdk
 jq
