@@ -20,6 +20,7 @@ spotify
 st
 sublime-text-dev
 surf
+sxiv
 ttf-ms-fonts
 virt-manager
 virt-viewer
