@@ -13,7 +13,6 @@ pavucontrol
 rofi
 scrot
 slock
-xautolock
 xorg-server
 xorg-xprop
 xorg-xrdb
