@@ -1,7 +1,6 @@
 autorandr
 brightnessctl
 compton
-feh
 i3-gaps
 i3blocks
 i3blocks-contrib
@@ -17,3 +16,4 @@ xorg-server
 xorg-xprop
 xorg-xrdb
 xss-lock
+xwallpaper

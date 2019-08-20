@@ -1,5 +1,4 @@
-arc-gtk-theme
-arc-icon-theme
+ant-dracula-gtk-theme
 firefox
 gimp
 google-chrome
@@ -10,7 +9,6 @@ lxappearance
 meld
 mkvtoolnix-gui
 nerd-fonts-dejavu-complete
-nerd-fonts-hack
 rdesktop
 remmina
 scrcpy

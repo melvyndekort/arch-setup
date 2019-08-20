@@ -2,7 +2,6 @@ autorandr
 brightnessctl
 compton
 dwm
-feh
 lightdm
 lightdm-gtk-greeter
 network-manager-applet
@@ -14,3 +13,4 @@ xorg-server
 xorg-xprop
 xorg-xrdb
 xss-lock
+xwallpaper
