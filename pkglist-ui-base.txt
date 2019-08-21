@@ -3,7 +3,6 @@ firefox
 gimp
 google-chrome
 gnu-free-fonts
-gtk-chtheme
 libreoffice-fresh
 lxappearance
 meld
