@@ -3,7 +3,6 @@ brightnessctl
 compton
 dwm
 evince
-gtk-chtheme
 network-manager-applet
 pavucontrol
 pulseaudio
@@ -11,10 +10,9 @@ pulseaudio-alsa
 rofi
 scrot
 slim
-xinit
 xorg-server
+xorg-xinit
 xorg-xprop
 xorg-xrdb
 xss-lock
-xorg-server
 xwallpaper
