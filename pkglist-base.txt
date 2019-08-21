@@ -61,6 +61,7 @@ wget
 woeusb
 xclip
 xsel
+youtube-dl
 zip
 zsh
 zsh-autosuggestions
