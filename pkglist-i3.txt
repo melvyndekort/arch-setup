@@ -12,7 +12,7 @@ pulseaudio-alsa
 rofi
 scrot
 slim
-slock
+xinit
 xorg-server
 xorg-xprop
 xorg-xrdb
