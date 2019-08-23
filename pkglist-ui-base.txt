@@ -1,4 +1,5 @@
 ant-dracula-gtk-theme
+arandr
 firefox
 gimp
 google-chrome
