@@ -1,5 +1,6 @@
 brightnessctl
 compton
+dunst
 evince
 i3-gaps
 i3blocks

@@ -1,5 +1,6 @@
 brightnessctl
 compton
+dunst
 dwm
 evince
 network-manager-applet
