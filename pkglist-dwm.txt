@@ -5,6 +5,7 @@ dwm
 evince
 network-manager-applet
 pavucontrol
+pcmanfm
 pulseaudio
 pulseaudio-alsa
 rofi
