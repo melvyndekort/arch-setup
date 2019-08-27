@@ -1,5 +1,23 @@
 #!/bin/sh
 
+YAY='yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed -'
+
+## Configure X11 configuration
+set_X11_config() {
+  sudo localectl --no-convert set-x11-keymap us pc104 euro compose:rctrl,compose:menu,compose:rwin,terminate:ctrl_alt_bksp,lv3:lalt_switch,eurosign:5
+  sudo cp configs/xorg/* /etc/X11/xorg.conf.d/
+}
+
+## Enable SLiM daemon
+enable_slim() {
+  sudo systemctl enable slim.service
+}
+
+## Enable GDM daemon
+enable_gdm() {
+  sudo systemctl enable gdm.service
+}
+
 ## Configure all preconditions for further setups
 setup_pre_conditions() {
   sudo pacman -Sy --noconfirm --needed base-devel
@@ -15,45 +33,56 @@ setup_pre_conditions() {
 
 ## Install all applications for a base CLI only system
 setup_base() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-base.txt
+  $YAY < pkglist-base.txt
 }
 
 ## Install all applications for development purposes
 setup_development() {
   pip install --upgrade --user -r pkglist-pip.txt
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-development.txt
+  $YAY < pkglist-development.txt
   sudo systemctl enable NetworkManager.service
 }
 
 ## Install all applications needed for any UI option
 setup_ui_base() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-ui-base.txt
+  $YAY < pkglist-ui-base.txt
 }
 
 ## Install all applications for suckless dwm
 setup_ui_dwm() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-dwm.txt
-  sudo cp configs/xorg/* /etc/X11/xorg.conf.d/
-  sudo systemctl enable slim.service
+  $YAY < pkglist-dwm.txt
+  set_x11_config
+  enable_slim
 }
 
 ## Install all applications for i3
 setup_ui_i3() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-i3.txt
-  sudo cp configs/xorg/* /etc/X11/xorg.conf.d/
-  sudo systemctl enable slim.service
+  $YAY < pkglist-i3.txt
+  set_x11_config
+  enable_slim
 }
 
 ## Install all applications for Gnome
 setup_ui_gnome() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-gnome-1.txt
+  $YAY < pkglist-gnome-1.txt
   yay -Rcnsu --sudoloop --noconfirm - < pkglist-gnome-2.txt
-  sudo systemctl enable gdm.service
+  enable_gdm
+}
+
+## Clone most used git repos
+setup_src_folders() {
+  cd $HOME/src
+
+  git clone -q git@github.com:melvyndekort/arch-setup.git
+  git clone -q git@github.com:melvyndekort/st.git
+  git clone -q git@github.com:melvyndekort/dwm.git
+  git clone -q git@github.com:melvyndekort/lmserver.git
+  git clone -q git@github.com:melvyndekort/melvyndekort.github.io.git
 }
 
 ## Install all work related applications
 setup_work() {
-  yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed - < pkglist-work.txt
+  $YAY < pkglist-work.txt
 }
 
 ## Configure dotfiles
@@ -83,9 +112,10 @@ options=(1 "Base" off
          2 "Suckless DWM" off
          3 "i3" off
          4 "GNOME" off
-         5 "Development" off
-         6 "Work" off
-         7 "Dotfiles" off)
+         5 "Setup src folders" off
+         6 "Development" off
+         7 "Work" off
+         8 "Dotfiles" off)
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
 
@@ -112,14 +142,17 @@ do
             setup_ui_gnome
             ;;
         5)
-            setup_pre_conditions
-            setup_development
+            setup_src_folders
             ;;
         6)
             setup_pre_conditions
-            setup_work
+            setup_development
             ;;
         7)
+            setup_pre_conditions
+            setup_work
+            ;;
+        8)
             setup_dotfiles
             ;;
     esac
