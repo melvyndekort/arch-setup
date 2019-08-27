@@ -12,7 +12,6 @@ pulseaudio
 pulseaudio-alsa
 rofi
 scrot
-slim
 xorg-server
 xorg-xinit
 xorg-xprop

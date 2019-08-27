@@ -8,11 +8,6 @@ set_X11_config() {
   sudo cp configs/xorg/* /etc/X11/xorg.conf.d/
 }
 
-## Enable SLiM daemon
-enable_slim() {
-  sudo systemctl enable slim.service
-}
-
 ## Enable GDM daemon
 enable_gdm() {
   sudo systemctl enable gdm.service
@@ -52,14 +47,12 @@ setup_ui_base() {
 setup_ui_dwm() {
   $YAY < pkglist-dwm.txt
   set_x11_config
-  enable_slim
 }
 
 ## Install all applications for i3
 setup_ui_i3() {
   $YAY < pkglist-i3.txt
   set_x11_config
-  enable_slim
 }
 
 ## Install all applications for Gnome
