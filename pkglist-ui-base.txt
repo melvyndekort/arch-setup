@@ -9,6 +9,7 @@ lxappearance
 meld
 mkvtoolnix-gui
 nerd-fonts-dejavu-complete
+papirus-icon-theme
 rdesktop
 remmina
 scrcpy
