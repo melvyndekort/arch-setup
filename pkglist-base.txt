@@ -23,12 +23,13 @@ id3v2
 iftop
 iotop
 iptables
-jre-openjdk
 jq
+jre-openjdk
 lame
 libvirt
 lm_sensors
 mlocate
+neofetch
 networkmanager
 networkmanager-openvpn
 nfs-utils
@@ -37,6 +38,7 @@ oh-my-zsh-git
 openbsd-netcat
 openssh
 openvpn
+p7zip
 pacman-contrib
 pdftk-bin
 podman
@@ -44,7 +46,6 @@ polkit
 python
 python2
 python-pip
-p7zip
 qemu
 ranger
 ripgrep

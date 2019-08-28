@@ -2,8 +2,8 @@ ant-dracula-gtk-theme
 arandr
 firefox
 gimp
-google-chrome
 gnu-free-fonts
+google-chrome
 libreoffice-fresh
 lxappearance
 meld

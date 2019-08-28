@@ -1,5 +1,5 @@
 awscli
-awsume==3.2.9
-aws-sam-cli
 aws-encryption-sdk-cli
+aws-sam-cli
+awsume==3.2.9
 bzt
