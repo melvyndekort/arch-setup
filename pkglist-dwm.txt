@@ -14,5 +14,6 @@ xorg-server
 xorg-xinit
 xorg-xprop
 xorg-xrdb
+xsecurelock
 xss-lock
 xwallpaper

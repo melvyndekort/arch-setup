@@ -3,7 +3,7 @@
 YAY='yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed -'
 
 ## Configure X11 configuration
-set_X11_config() {
+set_x11_config() {
   sudo localectl --no-convert set-x11-keymap us pc104 euro compose:rctrl,compose:menu,compose:rwin,terminate:ctrl_alt_bksp,lv3:lalt_switch,eurosign:5
   sudo cp configs/xorg/* /etc/X11/xorg.conf.d/
 }
@@ -43,12 +43,6 @@ setup_ui_base() {
   $YAY < pkglist-ui-base.txt
 }
 
-## Install all applications for suckless dwm
-setup_ui_dwm() {
-  $YAY < pkglist-dwm.txt
-  set_x11_config
-}
-
 ## Install all applications for i3
 setup_ui_i3() {
   $YAY < pkglist-i3.txt
@@ -68,7 +62,6 @@ setup_src_folders() {
 
   git clone -q git@github.com:melvyndekort/arch-setup.git
   git clone -q git@github.com:melvyndekort/st.git
-  git clone -q git@github.com:melvyndekort/dwm.git
   git clone -q git@github.com:melvyndekort/lmserver.git
   git clone -q git@github.com:melvyndekort/melvyndekort.github.io.git
 }
@@ -102,13 +95,12 @@ fi
 ## Ask the user for input which groups he wants to install
 cmd=(dialog --separate-output --checklist "Select which groups you want to install:" 22 76 16)
 options=(1 "Base" off
-         2 "Suckless DWM" off
-         3 "i3" off
-         4 "GNOME" off
-         5 "Setup src folders" off
-         6 "Development" off
-         7 "Work" off
-         8 "Dotfiles" off)
+         2 "i3" off
+         3 "GNOME" off
+         4 "Setup src folders" off
+         5 "Development" off
+         6 "Work" off
+         7 "Dotfiles" off)
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
 
@@ -122,30 +114,25 @@ do
         2)
             setup_pre_conditions
             setup_ui_base
-            setup_ui_dwm
+            setup_ui_i3
             ;;
         3)
             setup_pre_conditions
             setup_ui_base
-            setup_ui_i3
-            ;;
-        4)
-            setup_pre_conditions
-            setup_ui_base
             setup_ui_gnome
             ;;
-        5)
+        4)
             setup_src_folders
             ;;
-        6)
+        5)
             setup_pre_conditions
             setup_development
             ;;
-        7)
+        6)
             setup_pre_conditions
             setup_work
             ;;
-        8)
+        7)
             setup_dotfiles
             ;;
     esac
