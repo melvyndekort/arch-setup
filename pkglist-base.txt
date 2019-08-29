@@ -45,6 +45,7 @@ podman
 polkit
 python
 python2
+python-eyed3
 python-pip
 qemu
 ranger
