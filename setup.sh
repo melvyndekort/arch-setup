@@ -11,6 +11,7 @@ set_x11_config() {
 ## Enable GDM daemon
 enable_gdm() {
   sudo systemctl enable gdm.service
+  sudo systemctl daemon-reload
 }
 
 ## Configure all preconditions for further setups
@@ -29,12 +30,15 @@ setup_pre_conditions() {
 ## Install all applications for a base CLI only system
 setup_base() {
   $YAY < pkglist-base.txt
+  sudo systemctl daemon-reload
+  sudo systemctl enable linux-modules-cleanup
 }
 
 ## Install all applications for development purposes
 setup_development() {
   pip install --upgrade --user -r pkglist-pip.txt
   $YAY < pkglist-development.txt
+  sudo systemctl daemon-reload
   sudo systemctl enable NetworkManager.service
 }
 

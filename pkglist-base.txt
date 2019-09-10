@@ -25,6 +25,7 @@ iotop
 iptables
 jq
 jre-openjdk
+kernel-modules-hook
 lame
 libvirt
 lm_sensors
@@ -52,6 +53,7 @@ ranger
 ripgrep
 rsync
 samba
+sc-im
 stress
 tcpdump
 tmux

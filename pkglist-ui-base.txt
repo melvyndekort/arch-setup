@@ -4,6 +4,7 @@ firefox
 gimp
 gnu-free-fonts
 google-chrome
+gvim
 libreoffice-fresh
 lxappearance
 meld
