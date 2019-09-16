@@ -1,3 +1,4 @@
+aws-cli
 aws-ecs-cli
 gradle
 insomnia

@@ -1,4 +1,3 @@
-awscli
 aws-encryption-sdk-cli
 aws-sam-cli
 awsume==3.2.9
