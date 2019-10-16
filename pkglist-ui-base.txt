@@ -9,7 +9,7 @@ libreoffice-fresh
 lxappearance
 meld
 mkvtoolnix-gui
-nerd-fonts-dejavu-complete
+nerd-fonts-hack
 papirus-icon-theme
 rdesktop
 remmina
