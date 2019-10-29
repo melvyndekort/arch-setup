@@ -1,4 +1,6 @@
 ant
+displaylink
+evdi-git
 forticlientsslvpn
 jxplorer
 oracle-sqldeveloper

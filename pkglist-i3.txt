@@ -1,5 +1,6 @@
 brightnessctl
 compton
+dmenu
 dunst
 evince
 gvfs

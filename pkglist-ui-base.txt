@@ -1,6 +1,7 @@
 ant-dracula-gtk-theme
 arandr
 firefox
+fontconfig
 gimp
 gnu-free-fonts
 google-chrome
