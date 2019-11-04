@@ -19,11 +19,11 @@ setup_pre_conditions() {
   sudo pacman -Sy --noconfirm --needed base-devel
 
   if ! command -v yay; then
-    git clone https://aur.archlinux.org/yay.git /tmp/yay.git
-    cd /tmp/yay.git
+    git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin.git
+    cd /tmp/yay-bin.git
     makepkg -si
     cd -
-    rm -rf /tmp/yay.git
+    rm -rf /tmp/yay-bin.git
   fi
 }
 
