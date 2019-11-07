@@ -9,6 +9,7 @@ bind-tools
 bridge-utils
 buildah
 cdparanoia
+chezmoi
 cifs-utils
 cryptsetup
 cups
@@ -33,6 +34,7 @@ jq
 jre-openjdk
 kernel-modules-hook
 lame
+lastpass-cli
 libvirt
 lm_sensors
 lsof

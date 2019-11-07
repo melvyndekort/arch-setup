@@ -7,6 +7,7 @@ intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
 jdk-openjdk
 maven
+ngrok
 terraform
 tflint
 visual-studio-code-bin

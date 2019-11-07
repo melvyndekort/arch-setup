@@ -75,20 +75,10 @@ setup_work() {
   $YAY < pkglist-work.txt
 }
 
-## Configure dotfiles
+## Configure managed dotfiles
 setup_dotfiles() {
   cd $HOME
-
-  rm -rf $HOME/.dotfiles $HOME/.git
-
-  git init --separate-git-dir=$HOME/.dotfiles $HOME
-  git config status.showUntrackedFiles no
-
-  git remote add origin git@github.com:melvyndekort/dotfiles.git
-  git fetch
-  git checkout -f -t origin/master
-
-  chmod 600 $HOME/.ssh/config $HOME/.ssh/config.d/*
+  chezmoi init git@github.com:melvyndekort/dotfiles.git --apply
 }
 
 ## Install precondition to run the rest of this script
