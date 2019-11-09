@@ -78,7 +78,8 @@ setup_work() {
 ## Configure managed dotfiles
 setup_dotfiles() {
   cd $HOME
-  chezmoi init git@github.com:melvyndekort/dotfiles.git --apply
+  chezmoi init https://github.com/melvyndekort/dotfiles.git --apply
+  chezmoi source remote -- set-url --push origin git@github.com:melvyndekort/dotfiles.git
 }
 
 ## Install precondition to run the rest of this script
