@@ -4,6 +4,7 @@ dmenu
 dunst
 evince
 gvfs
+gvfs-smb
 i3blocks
 i3-gaps
 networkmanager
