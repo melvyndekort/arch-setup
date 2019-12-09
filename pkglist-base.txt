@@ -36,6 +36,7 @@ kernel-modules-hook
 lame
 lastpass-cli
 libvirt
+kernel-modules-hook
 lm_sensors
 lsof
 mlocate
@@ -52,7 +53,7 @@ openvpn
 p7zip
 pacman-contrib
 pacman-mirrorlist
-pdftk-bin
+pdftk
 podman
 polkit
 python
