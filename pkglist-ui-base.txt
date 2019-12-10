@@ -28,3 +28,4 @@ virt-manager
 virt-viewer
 vlc
 wireshark-qt
+xorg-xsetroot

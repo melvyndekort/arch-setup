@@ -53,6 +53,12 @@ setup_ui_i3() {
   set_x11_config
 }
 
+## Install all applications for bspwm
+setup_ui_bspwm() {
+  $YAY < pkglist-bspwm.txt
+  set_x11_config
+}
+
 ## Install all applications for Gnome
 setup_ui_gnome() {
   $YAY < pkglist-gnome-1.txt
@@ -91,11 +97,12 @@ fi
 cmd=(dialog --separate-output --checklist "Select which groups you want to install:" 22 76 16)
 options=(1 "Base" off
          2 "i3" off
-         3 "GNOME" off
-         4 "Setup src folders" off
-         5 "Development" off
-         6 "Work" off
-         7 "Dotfiles" off)
+         3 "bspwm" off
+         4 "GNOME" off
+         5 "Setup src folders" off
+         6 "Development" off
+         7 "Work" off
+         8 "Dotfiles" off)
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
 
@@ -114,20 +121,25 @@ do
         3)
             setup_pre_conditions
             setup_ui_base
-            setup_ui_gnome
+            setup_ui_bspwm
             ;;
         4)
-            setup_src_folders
+            setup_pre_conditions
+            setup_ui_base
+            setup_ui_gnome
             ;;
         5)
-            setup_pre_conditions
-            setup_development
+            setup_src_folders
             ;;
         6)
             setup_pre_conditions
-            setup_work
+            setup_development
             ;;
         7)
+            setup_pre_conditions
+            setup_work
+            ;;
+        8)
             setup_dotfiles
             ;;
     esac
