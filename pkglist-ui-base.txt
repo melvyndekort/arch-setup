@@ -5,6 +5,8 @@ fontconfig
 gimp
 gnu-free-fonts
 google-chrome
+gvfs
+gvfs-smb
 gvim
 libreoffice-fresh
 lxappearance

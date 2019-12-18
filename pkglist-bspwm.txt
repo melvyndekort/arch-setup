@@ -4,14 +4,13 @@ compton
 dmenu
 dunst
 evince
-gvfs
-gvfs-smb
 networkmanager
 network-manager-applet
 pavucontrol
 polybar
 pulseaudio
 pulseaudio-alsa
+rofi
 scrot
 sxhkd
 thunar
