@@ -14,6 +14,7 @@ rofi
 scrot
 thunar
 thunar-volman
+udiskie
 xorg-server
 xorg-xinit
 xorg-xprop
