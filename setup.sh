@@ -68,18 +68,24 @@ setup_src_folders() {
   git clone -q git@github.com:melvyndekort/st.git
   git clone -q git@github.com:melvyndekort/lmserver.git
   git clone -q git@github.com:melvyndekort/melvyndekort.github.io.git
+
+  cd -
 }
 
 ## Install all work related applications
 setup_work() {
   $YAY < pkglist-work.txt
+  sudo systemctl enable displaylink.service
 }
 
 ## Configure managed dotfiles
 setup_dotfiles() {
   cd $HOME
+
   chezmoi init https://github.com/melvyndekort/dotfiles.git --apply
   chezmoi source remote -- set-url --push origin git@github.com:melvyndekort/dotfiles.git
+
+  cd -
 }
 
 ## Install precondition to run the rest of this script

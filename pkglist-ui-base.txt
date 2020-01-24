@@ -29,5 +29,6 @@ ttf-ms-fonts
 virt-manager
 virt-viewer
 vlc
+w3m
 wireshark-qt
 xorg-xsetroot

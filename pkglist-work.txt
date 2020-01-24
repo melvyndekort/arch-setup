@@ -1,6 +1,7 @@
 ant
 displaylink
-evdi-git
+evdi
+linux-headers
 forticlientsslvpn
 jxplorer
 oracle-sqldeveloper
