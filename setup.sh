@@ -76,6 +76,8 @@ setup_src_folders() {
 setup_work() {
   $YAY < pkglist-work.txt
   sudo systemctl enable displaylink.service
+  sudo sed -i 's/^load-module module-suspend-on-idle/#load-module module-suspend-on-idle/' /etc/pulse/default.pa
+  systemctl --user restart pulseaudio.service
 }
 
 ## Configure managed dotfiles
