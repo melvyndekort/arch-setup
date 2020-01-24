@@ -169,4 +169,14 @@ passwd melvyn
 EDITOR=vim visudo
 ```
 
-Uncomment the `wheel` group configuration
+### Set up sudo
+
+Run `visudo` and make sure it contains the following configuration:
+
+```
+## Uncomment to allow members of group wheel to execute any command
+%wheel ALL=(ALL) ALL
+
+## Same thing without a password
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/chvt
+```
