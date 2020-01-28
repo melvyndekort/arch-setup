@@ -8,6 +8,7 @@ google-chrome
 gvfs
 gvfs-smb
 gvim
+keepassxc
 libreoffice-fresh
 lxappearance
 meld
