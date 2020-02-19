@@ -1,10 +1,10 @@
-atril
 brightnessctl
 compton
 dmenu
 dunst
 i3blocks
 i3-gaps
+mupdf
 networkmanager
 network-manager-applet
 pavucontrol
