@@ -1,8 +1,8 @@
+atril
 brightnessctl
 compton
 dmenu
 dunst
-evince
 i3blocks
 i3-gaps
 networkmanager
