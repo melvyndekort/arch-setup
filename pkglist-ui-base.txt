@@ -23,10 +23,10 @@ screenfetch
 skypeforlinux-stable-bin
 slack-desktop
 spotify
-st
 sublime-text-dev
 surf
 sxiv
+termite
 ttf-ms-fonts
 virt-manager
 virt-viewer

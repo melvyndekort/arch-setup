@@ -8,6 +8,7 @@ intellij-idea-ultimate-edition-jre
 jdk-openjdk
 maven
 ngrok
+python-pylint
 terraform
 tflint
 visual-studio-code-bin
