@@ -65,7 +65,6 @@ setup_src_folders() {
   cd $HOME/src
 
   git clone -q git@github.com:melvyndekort/arch-setup.git
-  git clone -q git@github.com:melvyndekort/st.git
   git clone -q git@github.com:melvyndekort/lmserver.git
   git clone -q git@github.com:melvyndekort/melvyndekort.github.io.git
 
