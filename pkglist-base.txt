@@ -69,6 +69,7 @@ python-eyed3
 python-pip
 qemu
 ranger
+reflector
 ripgrep
 rsync
 samba

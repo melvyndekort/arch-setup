@@ -27,11 +27,30 @@ setup_pre_conditions() {
   fi
 }
 
+## Configure reflector as a service to update pacman mirrorlist at every boot
+configure_reflector() {
+  cat << EOF > /etc/systemd/system/reflector.service
+[Unit]
+Description=Pacman mirrorlist update
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/reflector --latest 20 --country Netherlands --country Germany --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+
+[Install]
+RequiredBy=multi-user.target
+EOF
+  systemctl enable reflector
+}
+
 ## Install all applications for a base CLI only system
 setup_base() {
   $YAY < pkglist-base.txt
   sudo systemctl daemon-reload
   sudo systemctl enable linux-modules-cleanup
+  configure_reflector
 }
 
 ## Install all applications for development purposes
