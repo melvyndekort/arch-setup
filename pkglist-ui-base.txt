@@ -24,7 +24,6 @@ skypeforlinux-stable-bin
 slack-desktop
 spotify
 sublime-text-dev
-surf
 sxiv
 termite
 ttf-ms-fonts
