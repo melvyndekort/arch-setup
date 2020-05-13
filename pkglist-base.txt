@@ -96,4 +96,5 @@ youtube-dl
 zip
 zsh
 zsh-autosuggestions
+zsh-theme-powerlevel10k
 zsh-syntax-highlighting
