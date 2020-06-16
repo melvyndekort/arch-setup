@@ -13,6 +13,7 @@ libreoffice-fresh
 lxappearance
 meld
 mkvtoolnix-gui
+mpv
 nerd-fonts-hack
 noto-fonts-emoji
 papirus-icon-theme
