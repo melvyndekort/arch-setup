@@ -51,6 +51,7 @@ setup_base() {
   sudo systemctl daemon-reload
   sudo systemctl enable linux-modules-cleanup
   configure_reflector
+  sudo ln -sfT dash /usr/bin/sh
 }
 
 ## Install all applications for development purposes
