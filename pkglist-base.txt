@@ -65,6 +65,7 @@ pacman-mirrorlist
 pdftk
 podman
 polkit
+pulsemixer
 python
 python2
 python-eyed3
