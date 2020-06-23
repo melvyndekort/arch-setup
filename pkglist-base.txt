@@ -29,6 +29,7 @@ exiv2
 ffmpeg
 figlet
 flac
+fzf
 git
 gnupg
 htop
