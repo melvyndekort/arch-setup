@@ -32,6 +32,7 @@ flac
 fzf
 git
 gnupg
+gvim
 htop
 id3v2
 iftop
@@ -89,7 +90,6 @@ tree
 udisks2
 unzip
 vi-vim-symlink
-vim
 wget
 woeusb
 wpa_supplicant

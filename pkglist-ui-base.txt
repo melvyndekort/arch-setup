@@ -7,7 +7,6 @@ gnu-free-fonts
 google-chrome
 gvfs
 gvfs-smb
-gvim
 keepassxc
 libreoffice-fresh
 lxappearance
