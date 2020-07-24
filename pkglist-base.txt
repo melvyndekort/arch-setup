@@ -5,7 +5,7 @@ android-file-transfer
 android-tools
 autofs
 autojump
-bind-tools
+bind
 bridge-utils
 buildah
 cdparanoia
