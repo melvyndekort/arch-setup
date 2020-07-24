@@ -32,4 +32,5 @@ virt-viewer
 vlc
 w3m
 wireshark-qt
+xorg-xinput
 xorg-xsetroot
