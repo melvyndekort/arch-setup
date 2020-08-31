@@ -14,7 +14,9 @@ meld
 mkvtoolnix-gui
 mpv
 nerd-fonts-hack
+noto-fonts
 noto-fonts-emoji
+noto-fonts-cjk
 papirus-icon-theme
 rdesktop
 remmina
