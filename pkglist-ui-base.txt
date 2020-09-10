@@ -26,7 +26,6 @@ slack-desktop
 spotify
 sublime-text-dev
 sxiv
-termite
 ttf-ms-fonts
 virt-manager
 virt-viewer
@@ -35,3 +34,4 @@ w3m
 wireshark-qt
 xorg-xinput
 xorg-xsetroot
+xterm

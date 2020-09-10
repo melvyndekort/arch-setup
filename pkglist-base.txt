@@ -87,7 +87,6 @@ sc-im
 smbclient
 stress
 sudo
-termite-terminfo
 tcpdump
 tig
 tldr
