@@ -96,6 +96,7 @@ tree
 udisks2
 unzip
 vi-vim-symlink
+watchexec
 wget
 woeusb
 wpa_supplicant
