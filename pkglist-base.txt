@@ -4,7 +4,7 @@ alsa-utils
 android-file-transfer
 android-tools
 autofs
-autojump
+bat
 bind
 bridge-utils
 buildah
@@ -24,15 +24,19 @@ dosfstools
 dropbox
 ebtables
 efibootmgr
+exa
 exfat-utils
 exiv2
+fd
 ffmpeg
 figlet
 flac
 fzf
 git
 gnupg
+grub-theme-vimix
 gvim
+hexyl
 htop
 id3v2
 iftop
@@ -48,6 +52,7 @@ kernel-modules-hook
 lm_sensors
 lsof
 lvm2
+mdcat
 mlocate
 neofetch
 net-tools
@@ -84,6 +89,8 @@ stress
 sudo
 termite-terminfo
 tcpdump
+tig
+tldr
 tmux
 traceroute
 tree
@@ -97,6 +104,7 @@ xclip
 xorg-xauth
 xsel
 youtube-dl
+z
 zip
 zsh
 zsh-autosuggestions

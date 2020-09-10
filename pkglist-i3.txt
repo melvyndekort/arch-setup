@@ -2,6 +2,7 @@ brightnessctl
 compton
 dmenu
 dunst
+hacksaw
 i3blocks
 i3-gaps
 mupdf
@@ -11,10 +12,11 @@ pavucontrol
 pulseaudio
 pulseaudio-alsa
 rofi
-scrot
+shotgun
 thunar
 thunar-volman
 udiskie
+xdotool
 xorg-server
 xorg-xinit
 xorg-xprop
