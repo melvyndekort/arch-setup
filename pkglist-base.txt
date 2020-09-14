@@ -21,7 +21,6 @@ dialog
 dnsmasq
 docker
 dosfstools
-dropbox
 ebtables
 efibootmgr
 exa
@@ -89,6 +88,7 @@ sc-im
 smbclient
 stress
 sudo
+syncthing
 tcpdump
 tig
 tldr
