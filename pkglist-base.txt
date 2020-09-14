@@ -70,6 +70,7 @@ owncloud-client
 p7zip
 pacman-contrib
 pacman-mirrorlist
+pass
 pdftk
 podman
 polkit
