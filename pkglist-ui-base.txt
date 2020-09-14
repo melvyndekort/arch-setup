@@ -1,3 +1,4 @@
+alacritty
 ant-dracula-gtk-theme
 arandr
 firefox
