@@ -35,7 +35,6 @@ fzf
 git
 gnupg
 grub-theme-vimix
-gvim
 hexyl
 htop
 id3v2
@@ -55,6 +54,8 @@ lvm2
 mdcat
 mlocate
 neofetch
+neovim
+neovim-symlinks
 net-tools
 netctl
 networkmanager
@@ -95,7 +96,6 @@ traceroute
 tree
 udisks2
 unzip
-vi-vim-symlink
 watchexec
 wget
 woeusb
