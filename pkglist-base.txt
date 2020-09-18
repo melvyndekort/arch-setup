@@ -18,7 +18,6 @@ dash
 dashbinsh
 dhcpcd
 dialog
-dnsmasq
 docker
 dosfstools
 ebtables
@@ -65,7 +64,6 @@ oh-my-zsh-git
 openbsd-netcat
 openssh
 openvpn
-owncloud-client
 p7zip
 pacman-contrib
 pacman-mirrorlist
