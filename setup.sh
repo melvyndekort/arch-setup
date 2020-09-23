@@ -29,7 +29,7 @@ setup_pre_conditions() {
 
 ## Configure reflector as a service to update pacman mirrorlist at every boot
 configure_reflector() {
-  cat << EOF > /etc/systemd/system/reflector.service
+  cat << EOF | sudo tee /etc/systemd/system/reflector.service > /dev/null
 [Unit]
 Description=Pacman mirrorlist update
 Wants=network-online.target
@@ -42,7 +42,7 @@ ExecStart=/usr/bin/reflector --latest 20 --country Netherlands --country Germany
 [Install]
 RequiredBy=multi-user.target
 EOF
-  systemctl enable reflector
+  sudo systemctl enable reflector
 }
 
 ## Install all applications for a base CLI only system
@@ -116,47 +116,46 @@ if ! command -v dialog; then
 fi
 
 ## Ask the user for input which groups he wants to install
-cmd=(dialog --separate-output --checklist "Select which groups you want to install:" 22 76 16)
-options=(1 "Base" off
-         2 "i3" off
-         3 "GNOME" off
-         4 "Setup src folders" off
-         5 "Development" off
-         6 "Work" off
-         7 "Dotfiles" off)
-choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+tempfile=/tmp/dialog-$$
+dialog --separate-output --checklist "Select which groups you want to install:" 22 76 16 \
+1 "Base" off \
+2 "i3" off \
+3 "GNOME" off \
+4 "Setup src folders" off \
+5 "Development" off \
+6 "Work" off \
+7 "Dotfiles" off 2> $tempfile
 clear
 
-for choice in $choices
-do
-    case $choice in
-        1)
-            setup_pre_conditions
-            setup_base
-            ;;
-        2)
-            setup_pre_conditions
-            setup_ui_base
-            setup_ui_i3
-            ;;
-        3)
-            setup_pre_conditions
-            setup_ui_base
-            setup_ui_gnome
-            ;;
-        4)
-            setup_src_folders
-            ;;
-        5)
-            setup_pre_conditions
-            setup_development
-            ;;
-        6)
-            setup_pre_conditions
-            setup_work
-            ;;
-        7)
-            setup_dotfiles
-            ;;
-    esac
-done
+choice=`cat $tempfile`
+case $choice in
+  1)
+      setup_pre_conditions
+      setup_base
+      ;;
+  2)
+      setup_pre_conditions
+      setup_ui_base
+      setup_ui_i3
+      ;;
+  3)
+      setup_pre_conditions
+      setup_ui_base
+      setup_ui_gnome
+      ;;
+  4)
+      setup_src_folders
+      ;;
+  5)
+      setup_pre_conditions
+      setup_development
+      ;;
+  6)
+      setup_pre_conditions
+      setup_work
+      ;;
+  7)
+      setup_dotfiles
+      ;;
+esac
+rm -f $tempfile
