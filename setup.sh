@@ -127,35 +127,37 @@ dialog --separate-output --checklist "Select which groups you want to install:" 
 7 "Dotfiles" off 2> $tempfile
 clear
 
-choice=`cat $tempfile`
-case $choice in
-  1)
-      setup_pre_conditions
-      setup_base
-      ;;
-  2)
-      setup_pre_conditions
-      setup_ui_base
-      setup_ui_i3
-      ;;
-  3)
-      setup_pre_conditions
-      setup_ui_base
-      setup_ui_gnome
-      ;;
-  4)
-      setup_src_folders
-      ;;
-  5)
-      setup_pre_conditions
-      setup_development
-      ;;
-  6)
-      setup_pre_conditions
-      setup_work
-      ;;
-  7)
-      setup_dotfiles
-      ;;
-esac
+choices=`cat $tempfile`
+for i in $choices; do
+  case $i in
+    1)
+        setup_pre_conditions
+        setup_base
+        ;;
+    2)
+        setup_pre_conditions
+        setup_ui_base
+        setup_ui_i3
+        ;;
+    3)
+        setup_pre_conditions
+        setup_ui_base
+        setup_ui_gnome
+        ;;
+    4)
+        setup_src_folders
+        ;;
+    5)
+        setup_pre_conditions
+        setup_development
+        ;;
+    6)
+        setup_pre_conditions
+        setup_work
+        ;;
+    7)
+        setup_dotfiles
+        ;;
+  esac
+done
 rm -f $tempfile
