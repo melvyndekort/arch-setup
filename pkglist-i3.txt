@@ -1,5 +1,4 @@
 brightnessctl
-compton
 dmenu
 dunst
 hacksaw
@@ -9,6 +8,7 @@ mupdf
 networkmanager
 network-manager-applet
 pavucontrol
+picom
 pulseaudio
 pulseaudio-alsa
 rofi
