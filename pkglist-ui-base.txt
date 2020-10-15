@@ -24,7 +24,6 @@ scrcpy
 screenfetch
 skypeforlinux-stable-bin
 slack-desktop
-spotify
 sublime-text-dev
 sxiv
 ttf-ms-fonts
