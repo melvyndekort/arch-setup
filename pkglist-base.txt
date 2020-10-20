@@ -6,6 +6,8 @@ android-tools
 autofs
 bat
 bind
+bluez
+bluez-utils
 bridge-utils
 buildah
 cdparanoia
@@ -71,6 +73,7 @@ pass
 pdftk
 podman
 polkit
+pulseaudio-bluetooth
 pulsemixer
 python
 python2

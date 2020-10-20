@@ -1,3 +1,4 @@
+blueman
 brightnessctl
 dmenu
 dunst
