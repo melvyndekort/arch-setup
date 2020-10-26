@@ -26,6 +26,8 @@ skypeforlinux-stable-bin
 slack-desktop
 sublime-text-dev
 sxiv
+ttf-dejavu
+ttf-font-awesome
 ttf-ms-fonts
 virt-manager
 virt-viewer
