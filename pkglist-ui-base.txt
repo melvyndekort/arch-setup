@@ -3,6 +3,7 @@ ant-dracula-gtk-theme
 arandr
 firefox
 fontconfig
+galculator
 gimp
 gnu-free-fonts
 google-chrome
