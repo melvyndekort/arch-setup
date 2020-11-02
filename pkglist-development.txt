@@ -11,5 +11,5 @@ ngrok
 python-pylint
 terraform
 tflint
-visual-studio-code-bin
+vscodium
 yamllint
