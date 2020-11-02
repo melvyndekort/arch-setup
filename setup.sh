@@ -103,8 +103,12 @@ setup_work() {
 ## Configure managed dotfiles
 setup_dotfiles() {
   cd $HOME
+  export XDG_DATA_HOME=$HOME/.local/share
+  export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
-  chezmoi init https://github.com/melvyndekort/dotfiles.git --apply
+  chezmoi init https://github.com/melvyndekort/dotfiles.git
+  sh $HOME/.local/share/chezmoi/run_once_setup-gnupg.sh
+  chezmoi apply
   chezmoi source remote -- set-url --push origin git@github.com:melvyndekort/dotfiles.git
 
   cd -
