@@ -1,4 +1,4 @@
-betterscreenlock
+betterlockscreen
 blueman
 brightnessctl
 dmenu
