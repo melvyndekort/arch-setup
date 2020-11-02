@@ -102,12 +102,14 @@ setup_work() {
 
 ## Configure managed dotfiles
 setup_dotfiles() {
+  export XDG_CONFIG_HOME=$HOME/.config
   export XDG_DATA_HOME=$HOME/.local/share
   export GNUPGHOME="$XDG_DATA_HOME"/gnupg
   export GPG_TTY=$(tty)
-  mkdir -p $GNUPGHOME
+  mkdir -p $XDG_CONFIG_HOME $GNUPGHOME
   chmod 700 $GNUPGHOME
   
+  lpass login 'melvyn@mdekort.nl'
   lpass show --field="Private Key" "GPG melvyn@mdekort.nl" | gpg --import
   
   echo
