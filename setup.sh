@@ -102,16 +102,27 @@ setup_work() {
 
 ## Configure managed dotfiles
 setup_dotfiles() {
-  cd $HOME
   export XDG_DATA_HOME=$HOME/.local/share
   export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+  export GPG_TTY=$(tty)
+  mkdir -p $GNUPGHOME
+  chmod 700 $GNUPGHOME
+  
+  lpass show --field="Private Key" "GPG melvyn@mdekort.nl" | gpg --import
+  
+  echo
+  echo
+  echo '============================================================================'
+  echo '  Now importing the private GPG key, you need to ultimately trust the key:'
+  echo '    # enter 5<RETURN>'
+  echo '    # enter y<RETURN>'
+  echo '============================================================================'
+  echo
+  echo
+  gpg --edit-key melvyn@mdekort.nl trust quit
 
-  chezmoi init https://github.com/melvyndekort/dotfiles.git
-  sh $HOME/.local/share/chezmoi/run_once_setup-gnupg.sh
-  chezmoi apply
+  chezmoi init --apply https://github.com/melvyndekort/dotfiles.git
   chezmoi source remote -- set-url --push origin git@github.com:melvyndekort/dotfiles.git
-
-  cd -
 }
 
 ## Install precondition to run the rest of this script
