@@ -9,7 +9,6 @@ bind
 bluez
 bluez-utils
 bridge-utils
-buildah
 cdparanoia
 chezmoi
 cifs-utils
@@ -71,7 +70,6 @@ pacman-contrib
 pacman-mirrorlist
 pass
 pdftk
-podman
 polkit
 pulseaudio-bluetooth
 pulsemixer
