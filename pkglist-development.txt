@@ -1,5 +1,6 @@
 aws-cli
 aws-ecs-cli
+aws-sam-cli
 aws-session-manager-plugin
 gradle
 insomnia
