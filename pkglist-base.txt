@@ -107,5 +107,5 @@ z
 zip
 zsh
 zsh-autosuggestions
-zsh-theme-powerlevel10k-git
+zsh-theme-powerlevel10k
 zsh-syntax-highlighting
