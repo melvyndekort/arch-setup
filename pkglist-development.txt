@@ -3,12 +3,12 @@ aws-ecs-cli
 aws-sam-cli
 aws-session-manager-plugin
 gradle
-insomnia
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
 jdk-openjdk
 maven
 ngrok
+postman-bin
 python-pylint
 terraform
 tflint
