@@ -109,8 +109,9 @@ setup_dotfiles() {
   mkdir -p $XDG_CONFIG_HOME $GNUPGHOME
   chmod 700 $GNUPGHOME
   
-  lpass login 'melvyn@mdekort.nl'
-  lpass show --field="Private Key" "GPG melvyn@mdekort.nl" | gpg --import
+  curl -sL https://gist.githubusercontent.com/melvyndekort/072e302aa02ed43b1052002f90da564e/raw/4ce43c8435f9f6ae8a86a10d217ab74a9f73bc35/melvyn |\
+  gpg --decrypt |\
+  gpg --import
   
   echo
   echo
