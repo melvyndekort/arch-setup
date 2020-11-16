@@ -9,6 +9,7 @@ i3-gaps
 mupdf
 networkmanager
 network-manager-applet
+pass-clip
 pavucontrol
 picom
 pulseaudio

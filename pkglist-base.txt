@@ -36,6 +36,7 @@ gnupg
 grub-theme-vimix
 hexyl
 htop
+httpie
 id3v2
 iftop
 iotop
@@ -69,6 +70,7 @@ p7zip
 pacman-contrib
 pacman-mirrorlist
 pass
+pass-otp
 pdftk
 polkit
 pulseaudio-bluetooth
