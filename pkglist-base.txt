@@ -12,6 +12,7 @@ bridge-utils
 cdparanoia
 chezmoi
 cifs-utils
+cmatrix
 cryptsetup
 cups
 curl
