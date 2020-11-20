@@ -30,6 +30,7 @@ sxiv
 ttf-dejavu
 ttf-font-awesome
 ttf-ms-fonts
+v4l-utils
 virt-manager
 virt-viewer
 vlc
