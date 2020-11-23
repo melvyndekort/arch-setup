@@ -30,6 +30,7 @@ sxiv
 ttf-dejavu
 ttf-font-awesome
 ttf-ms-fonts
+ttf-weather-icons
 v4l-utils
 virt-manager
 virt-viewer

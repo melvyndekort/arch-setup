@@ -67,9 +67,9 @@ setup_ui_base() {
   $YAY < pkglist-ui-base.txt
 }
 
-## Install all applications for i3
-setup_ui_i3() {
-  $YAY < pkglist-i3.txt
+## Install all applications for tiling window managers
+setup_ui_tiling() {
+  $YAY < pkglist-tiling.txt
   set_x11_config
 }
 
@@ -137,7 +137,7 @@ fi
 tempfile=/tmp/dialog-$$
 dialog --separate-output --checklist "Select which groups you want to install:" 22 76 16 \
 1 "Base" off \
-2 "i3" off \
+2 "Tiling" off \
 3 "GNOME" off \
 4 "Setup src folders" off \
 5 "Development" off \
@@ -155,7 +155,7 @@ for i in $choices; do
     2)
         setup_pre_conditions
         setup_ui_base
-        setup_ui_i3
+        setup_ui_tiling
         ;;
     3)
         setup_pre_conditions
