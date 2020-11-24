@@ -76,6 +76,7 @@ pdftk
 polkit
 pulseaudio-bluetooth
 pulsemixer
+pwgen
 python
 python2
 python-eyed3
