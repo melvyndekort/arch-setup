@@ -6,6 +6,7 @@ dmenu
 dunst
 hacksaw
 i3-gaps
+i3blocks
 mupdf
 networkmanager
 network-manager-applet
