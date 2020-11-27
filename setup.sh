@@ -124,6 +124,8 @@ setup_dotfiles() {
   echo
   gpg --edit-key melvyn@mdekort.nl trust quit
 
+  git clone git@github.com:melvyndekort/password-store.git ~/.password-store
+
   chezmoi init --apply https://github.com/melvyndekort/dotfiles.git
   chezmoi source remote -- set-url --push origin git@github.com:melvyndekort/dotfiles.git
 }
