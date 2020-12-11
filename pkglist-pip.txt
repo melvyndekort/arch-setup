@@ -1,2 +1,3 @@
 aws-encryption-sdk-cli
 awsume
+awsume-console-plugin
