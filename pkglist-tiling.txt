@@ -13,7 +13,6 @@ network-manager-applet
 pass-clip
 pavucontrol
 picom
-polybar
 pulseaudio
 pulseaudio-alsa
 rofi
