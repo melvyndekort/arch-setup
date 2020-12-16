@@ -11,6 +11,6 @@ ngrok
 postman-bin
 python-pylint
 terraform
-tflint
-vscodium
+tflint-bin
+vscodium-bin
 yamllint
