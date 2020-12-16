@@ -50,7 +50,7 @@ vgcreate ssd /dev/mapper/crypt
 
 lvcreate -L 16G -n swap ssd
 lvcreate -L 50G -n root ssd
-lvcreate -L 200G -n home ssd
+lvcreate -l 100%FREE -n home ssd
 ```
 
 ### Format the partitions
@@ -74,8 +74,14 @@ swapon /dev/mapper/ssd-swap
 
 ### Install essential packages
 
+Edit the mirrorlist.
 ```
-pacstrap /mnt base linux linux-firmware dialog wpa_supplicant dhcpcd netctl cryptsetup lvm2 dosfstools efibootmgr sudo pacman-contrib git vim
+vim /etc/pacman.d/mirrorlist
+```
+
+Install the base packages.
+```
+pacstrap /mnt base linux linux-firmware dialog cryptsetup lvm2 dosfstools efibootmgr sudo pacman-contrib git neovim
 ```
 
 ### Setup disk mounts
@@ -125,7 +131,7 @@ Edit `/etc/hosts` and add the following lines:
 Change the `HOOKS=(...)` line to:
 
 ```
-HOOKS=(base udev autodetect keyboard keymap consolefont modconf block encrypt lvm2 filesystems fsck)
+HOOKS=(...block encrypt lvm2 filesystems...)
 ```
 
 And run:
@@ -140,10 +146,32 @@ mkinitcpio -P
 passwd
 ```
 
+### Create user
+
+```
+useradd -m -G wheel USER
+passwd USER
+```
+
+### Set up sudo
+
+Run `visudo` and make sure it contains the wheel configuration.
+
+```
+EDITOR=nvim visudo
+```
+
+```
+## Uncomment to allow members of group wheel to execute any command
+%wheel ALL=(ALL) ALL
+```
+
 ### Install boot loader
 
 ```
-efibootmgr -v -c -L "Arch Linux" -l /vmlinuz-linux -u 'cryptdevice=UUID=<LUKS UUID>:cryptlvm root=/dev/ssd/root rw initrd=\initramfs-linux.img'
+lsblk -dno UUID /dev/sda2
+
+efibootmgr -v -c -L "Arch Linux" -l /vmlinuz-linux -u 'cryptdevice=UUID=<INSERT UUID>:cryptlvm root=/dev/ssd/root rw initrd=\initramfs-linux.img'
 ```
 
 ### Exit chroot and boot into Arch
@@ -153,30 +181,11 @@ umount -R /mnt
 reboot
 ```
 
-### Set up mirrorlist
-
+### Configure the rest of the system
 ```
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
-rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
-```
-
-### Create user
-
-```
-useradd -G wheel melvyn
-passwd melvyn
-EDITOR=vim visudo
-```
-
-### Set up sudo
-
-Run `visudo` and make sure it contains the following configuration:
-
-```
-## Uncomment to allow members of group wheel to execute any command
-%wheel ALL=(ALL) ALL
-
-## Same thing without a password
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/chvt
+mkdir ~/src
+cd ~/src
+git clone git@github.com:melvyndekort/arch-setup.git
+cd arch-setup
+./setup.sh
 ```
