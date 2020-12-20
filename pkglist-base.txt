@@ -20,6 +20,7 @@ dash
 dashbinsh
 dhcpcd
 dialog
+dmidecode
 docker
 dosfstools
 ebtables
