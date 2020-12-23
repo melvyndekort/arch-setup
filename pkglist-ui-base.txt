@@ -23,7 +23,6 @@ rdesktop
 remmina
 scrcpy
 screenfetch
-skypeforlinux-stable-bin
 slack-desktop
 sublime-text-dev
 sxiv
