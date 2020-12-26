@@ -21,6 +21,7 @@ dashbinsh
 dhcpcd
 dialog
 dmidecode
+dnsmasq
 docker
 dosfstools
 ebtables
