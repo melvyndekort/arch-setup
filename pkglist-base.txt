@@ -54,6 +54,7 @@ kernel-modules-hook
 lm_sensors
 lsof
 lvm2
+man-db
 mdcat
 mlocate
 neofetch
