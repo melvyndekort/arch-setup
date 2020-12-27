@@ -164,14 +164,18 @@ EDITOR=nvim visudo
 ```
 ## Uncomment to allow members of group wheel to execute any command
 %wheel ALL=(ALL) ALL
+
+## Same thing without a password
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/chvt
 ```
 
 ### Install boot loader
 
 ```
 lsblk -dno UUID /dev/sda2
+lsblk -dno UUID /dev/mapper/ssd-root
 
-efibootmgr -v -c -L "Arch Linux" -l /vmlinuz-linux -u 'cryptdevice=UUID=<INSERT UUID>:cryptlvm root=/dev/ssd/root rw initrd=\initramfs-linux.img'
+efibootmgr -v -c -L "Arch Linux" -l /vmlinuz-linux -u 'cryptdevice=UUID=<UUID 1>:cryptlvm root=UUID=<UUID 2> rw initrd=\initramfs-linux.img'
 ```
 
 ### Exit chroot and boot into Arch
@@ -188,4 +192,15 @@ cd ~/src
 git clone git@github.com:melvyndekort/arch-setup.git
 cd arch-setup
 ./setup.sh
+
+vim /etc/libvirt/qemu.conf
+user = "root"
+group = "root"
+dynamic_ownership = 0
+
+usermod -a -G libvirt,docker,kvm melvyn
+systemctl enable docker
+systemctl enable libvirtd
+
+reboot
 ```
