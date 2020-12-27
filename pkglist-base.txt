@@ -89,6 +89,7 @@ reflector
 ripgrep
 rsync
 samba
+sl
 smbclient
 stress
 sudo
