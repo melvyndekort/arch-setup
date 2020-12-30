@@ -172,10 +172,22 @@ EDITOR=nvim visudo
 ### Install boot loader
 
 ```
-lsblk -dno UUID /dev/sda2
-lsblk -dno UUID /dev/mapper/ssd-root
+bootctl install
+```
 
-efibootmgr -v -c -L "Arch Linux" -l /vmlinuz-linux -u 'cryptdevice=UUID=<UUID 1>:cryptlvm root=UUID=<UUID 2> rw initrd=\initramfs-linux.img'
+Create `/boot/loader/loader.conf`
+```
+default	arch.conf
+timeout 0
+#console-mode keep
+```
+
+Create `/boot/loader/entries/arch.conf`
+```
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /initramfs-linux.img
+options	cryptdevice=UUID=<UUID OF SDA2>:cryptlvm root=UUID=<UUID OF ROOT> rw
 ```
 
 ### Exit chroot and boot into Arch
