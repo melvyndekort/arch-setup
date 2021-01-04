@@ -103,6 +103,7 @@ traceroute
 tree
 udisks2
 unzip
+usbutils
 watchexec
 wget
 woeusb
