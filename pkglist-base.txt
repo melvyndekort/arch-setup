@@ -103,6 +103,7 @@ tmux
 traceroute
 tree
 udisks2
+unrar
 unzip
 usbutils
 watchexec
