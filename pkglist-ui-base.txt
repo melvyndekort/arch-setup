@@ -36,6 +36,7 @@ virt-viewer
 vlc
 w3m
 wireshark-qt
+x11-ssh-askpass
 xorg-xinput
 xorg-xsetroot
 xterm

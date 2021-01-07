@@ -197,7 +197,13 @@ umount -R /mnt
 reboot
 ```
 
-### Configure the rest of the system
+### Configure the rest of the system without SSH
+```
+pacman -Sy openssh-askpass
+curl -sl https://assets.mdekort.nl/secure/ssh.txt | gpg -d | ssh-add -
+```
+
+### Finalize installation
 ```
 mkdir ~/src
 cd ~/src
