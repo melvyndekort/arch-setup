@@ -57,6 +57,7 @@ lvm2
 man-db
 mdcat
 mlocate
+mtr
 neofetch
 neovim
 neovim-symlinks
