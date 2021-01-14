@@ -6,3 +6,5 @@ forticlientsslvpn
 jxplorer
 oracle-sqldeveloper
 ppd-toshiba-estudio5560c
+teams
+zoom
