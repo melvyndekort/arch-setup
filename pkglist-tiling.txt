@@ -4,6 +4,7 @@ brightnessctl
 bspwm
 dmenu
 dunst
+feh
 hacksaw
 i3-gaps
 i3blocks
@@ -28,4 +29,3 @@ xorg-xinit
 xorg-xprop
 xorg-xrdb
 xss-lock
-xwallpaper
