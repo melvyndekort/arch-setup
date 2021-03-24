@@ -42,6 +42,7 @@ htop
 httpie
 id3v2
 iftop
+inetutils
 iotop
 iptables
 jq
