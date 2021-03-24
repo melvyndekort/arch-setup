@@ -108,10 +108,19 @@ setup_dotfiles() {
   export GPG_TTY=$(tty)
   mkdir -p $XDG_CONFIG_HOME $GNUPGHOME
   chmod 700 $GNUPGHOME
-  
-  curl -sL https://assets.mdekort.nl/secure/gpg.txt |\
-  gpg --decrypt |\
-  gpg --import
+
+  while true; do
+    curl -sL https://assets.mdekort.nl/secure/gpg.txt |\
+    gpg --decrypt |\
+    gpg --import
+
+    if [ $? -eq 0 ]; then
+        break
+    fi
+
+    echo "Failed, try again..."
+    sleep 1
+  done
   
   echo
   echo
@@ -126,8 +135,8 @@ setup_dotfiles() {
 
   git clone git@github.com:melvyndekort/password-store.git ~/.password-store
 
-  chezmoi init --apply https://github.com/melvyndekort/dotfiles.git
-  chezmoi source remote -- set-url --push origin git@github.com:melvyndekort/dotfiles.git
+  chezmoi init --apply melvyndekort
+  chezmoi git remote -- set-url --push origin git@github.com:melvyndekort/dotfiles.git
 }
 
 ## Install precondition to run the rest of this script
