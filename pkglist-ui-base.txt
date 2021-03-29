@@ -20,11 +20,13 @@ noto-fonts
 noto-fonts-emoji
 papirus-icon-theme
 rdesktop
+remarkable
 remmina
 scrcpy
 screenfetch
 slack-desktop
 sublime-text-dev
+surf
 sxiv
 ttf-dejavu
 ttf-font-awesome
