@@ -85,8 +85,12 @@ setup_src_folders() {
   cd $HOME/src
 
   git clone -q git@github.com:melvyndekort/arch-setup.git
+  git clone -q git@github.com:melvyndekort/aws-mdekort.git
   git clone -q git@github.com:melvyndekort/lmserver.git
+  git clone -q git@github.com:melvyndekort/mdekort-docs.git
   git clone -q git@github.com:melvyndekort/melvyndekort.github.io.git
+  git clone -q git@github.com:melvyndekort/pihole.git
+  git clone -q git@github.com:melvyndekort/scheduler.git
 
   cd -
 }
