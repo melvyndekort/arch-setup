@@ -14,6 +14,7 @@ network-manager-applet
 pass-clip
 pavucontrol
 picom
+polkit-gnome
 pulseaudio
 pulseaudio-alsa
 rofi

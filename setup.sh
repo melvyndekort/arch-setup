@@ -8,6 +8,12 @@ set_x11_config() {
   sudo cp configs/xorg/* /etc/X11/xorg.conf.d/
 }
 
+## Configure polkit
+set_polkit_config() {
+  sudo cp configs/polkit/*.rules /etc/polkit-1/rules.d/
+  sudo cp configs/polkit/*.policy /usr/share/polkit-1/actions/
+}
+
 ## Enable GDM daemon
 enable_gdm() {
   sudo systemctl enable gdm.service
@@ -51,7 +57,7 @@ setup_base() {
   sudo systemctl daemon-reload
   sudo systemctl enable linux-modules-cleanup
   configure_reflector
-  sudo ln -sfT dash /usr/bin/sh
+  set_polkit_config
 }
 
 ## Install all applications for development purposes

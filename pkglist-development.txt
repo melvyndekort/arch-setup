@@ -6,6 +6,7 @@ gradle
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
 jdk-openjdk
+jdk8-openjdk
 maven
 ngrok
 postman-bin

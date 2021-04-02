@@ -1,0 +1,11 @@
+//
+// Allow physical users to switch terminals without authentication
+//
+polkit.addRule(function(action, subject) {
+  if (action.id == "nl.mdekort.chvt" &&
+    subject.local && subject.session) {
+    polkit.log("action=" + action);
+    polkit.log("subject=" + subject);
+    return polkit.Result.YES;
+  }
+});

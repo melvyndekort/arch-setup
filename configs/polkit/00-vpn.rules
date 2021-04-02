@@ -1,0 +1,11 @@
+//
+// Allow admin users to manage an SSL VPN connection
+//
+polkit.addRule(function(action, subject) {
+  if (action.id == "nl.mdekort.forticlientsslvpn_cli" &&
+    subject.isInGroup("wheel")) {
+    polkit.log("action=" + action);
+    polkit.log("subject=" + subject);
+    return polkit.Result.YES;
+  }
+});
