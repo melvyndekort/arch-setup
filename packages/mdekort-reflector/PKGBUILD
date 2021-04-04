@@ -1,0 +1,32 @@
+pkgname=mdekort-reflector
+pkgver=0d5a857
+pkgrel=1
+pkgdesc="Reflector systemd config to autorun at startup"
+arch=('any')
+url="https://github.com/melvyndekort/arch-setup"
+license=('GPL')
+#groups=()
+depends=('reflector')
+#makedepends=()
+#optdepends=()
+#provides=()
+#conflicts=()
+#replaces=()
+#backup=()
+#options=()
+source=('reflector.service')
+#noextract=()
+md5sums=('SKIP')
+install="$pkgname.install"
+
+pkgver() {
+  git describe --tags || git rev-parse --short HEAD
+}
+
+package() {
+  msg "Creating folders..."
+  mkdir -p $pkgdir/etc/systemd/system
+
+  msg "Installing files..."
+  install -D -m755 $srcdir/* $pkgdir/etc/systemd/system/
+}

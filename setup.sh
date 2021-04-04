@@ -1,28 +1,22 @@
 #!/bin/sh
 
+set -e
+
 YAY='yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed -'
 
-## Configure X11 configuration
-set_x11_config() {
-  sudo localectl --no-convert set-x11-keymap us pc104 euro compose:rctrl,compose:menu,compose:rwin,terminate:ctrl_alt_bksp,lv3:lalt_switch,eurosign:5
-  sudo cp configs/xorg/* /etc/X11/xorg.conf.d/
+## Build and install custom package
+build_and_install () {
+  makepkg -cCfi --noconfirm
 }
 
-## Configure polkit
-set_polkit_config() {
-  sudo cp configs/polkit/*.rules /etc/polkit-1/rules.d/
-  sudo cp configs/polkit/*.policy /usr/share/polkit-1/actions/
-}
-
-## Enable GDM daemon
-enable_gdm() {
-  sudo systemctl enable gdm.service
-  sudo systemctl daemon-reload
+## Install packages without confirmation
+install_packages () {
+  sudo pacman -Sy --noconfirm --needed $*
 }
 
 ## Configure all preconditions for further setups
 setup_pre_conditions() {
-  sudo pacman -Sy --noconfirm --needed base-devel
+  install_packages base-devel
 
   if ! command -v yay; then
     git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin.git
@@ -33,70 +27,50 @@ setup_pre_conditions() {
   fi
 }
 
-## Configure reflector as a service to update pacman mirrorlist at every boot
-configure_reflector() {
-  cat << EOF | sudo tee /etc/systemd/system/reflector.service > /dev/null
-[Unit]
-Description=Pacman mirrorlist update
-Wants=network-online.target
-After=network-online.target
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/reflector --latest 20 --country Netherlands --country Germany --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-
-[Install]
-RequiredBy=multi-user.target
-EOF
-  sudo systemctl enable reflector
-}
-
 ## Install all applications for a base CLI only system
 setup_base() {
   $YAY < pkglist-base.txt
   sudo systemctl daemon-reload
   sudo systemctl enable linux-modules-cleanup
-  configure_reflector
-  set_polkit_config
+
+  (
+    cd packages/mdekort-reflector
+    build_and_install
+  )
+
+  (
+    cd packages/mdekort-polkit
+    build_and_install
+  )
 }
 
 ## Install all applications for development purposes
 setup_development() {
-  pip install --upgrade --user -r pkglist-pip.txt
   $YAY < pkglist-development.txt
-  sudo systemctl daemon-reload
-  sudo systemctl enable NetworkManager.service
-}
-
-## Install all applications needed for any UI option
-setup_ui_base() {
-  $YAY < pkglist-ui-base.txt
+  pip install --upgrade --user -r pkglist-pip.txt
 }
 
 ## Install all applications for tiling window managers
-setup_ui_tiling() {
-  $YAY < pkglist-tiling.txt
-  set_x11_config
-}
+setup_ui() {
+  $YAY < pkglist-ui.txt
 
-## Install all applications for Gnome
-setup_ui_gnome() {
-  $YAY < pkglist-gnome-1.txt
-  yay -Rcnsu --sudoloop --noconfirm - < pkglist-gnome-2.txt
-  enable_gdm
+  (
+    cd packages/xorg-mdekort
+    build_and_install
+  )
 }
 
 ## Clone most used git repos
 setup_src_folders() {
   cd $HOME/src
 
-  git clone -q git@github.com:melvyndekort/arch-setup.git
-  git clone -q git@github.com:melvyndekort/aws-mdekort.git
-  git clone -q git@github.com:melvyndekort/cheatsheets.git
-  git clone -q git@github.com:melvyndekort/lmserver.git
-  git clone -q git@github.com:melvyndekort/melvyndekort.github.io.git
-  git clone -q git@github.com:melvyndekort/pihole.git
-  git clone -q git@github.com:melvyndekort/scheduler.git
+  [ ! -d 'arch-setup' ] && git clone -q git@github.com:melvyndekort/arch-setup.git
+  [ ! -d 'aws-mdekort' ] && git clone -q git@github.com:melvyndekort/aws-mdekort.git
+  [ ! -d 'cheatsheets' ] && git clone -q git@github.com:melvyndekort/cheatsheets.git
+  [ ! -d 'lmserver' ] && git clone -q git@github.com:melvyndekort/lmserver.git
+  [ ! -d 'melvyndekort.github.io' ] && git clone -q git@github.com:melvyndekort/melvyndekort.github.io.git
+  [ ! -d 'pihole' ] && git clone -q git@github.com:melvyndekort/pihole.git
+  [ ! -d 'scheduler' ] && git clone -q git@github.com:melvyndekort/scheduler.git
 
   cd -
 }
@@ -104,6 +78,7 @@ setup_src_folders() {
 ## Install all work related applications
 setup_work() {
   $YAY < pkglist-work.txt
+
   sudo systemctl enable displaylink.service
   sudo sed -i 's/^load-module module-suspend-on-idle/#load-module module-suspend-on-idle/' /etc/pulse/default.pa
   systemctl --user daemon-reload
@@ -143,27 +118,32 @@ setup_dotfiles() {
   echo
   gpg --edit-key melvyn@mdekort.nl trust quit
 
-  git clone git@github.com:melvyndekort/password-store.git ~/.password-store
+  [ ! -d "$HOME/.password-store" ] && git clone git@github.com:melvyndekort/password-store.git $HOME/.password-store
 
   chezmoi init --apply melvyndekort
   chezmoi git remote -- set-url --push origin git@github.com:melvyndekort/dotfiles.git
 }
 
+## Enable Network Manager (usually used in laptop setups)
+setup_nm() {
+  sudo systemctl enable NetworkManager.service
+}
+
 ## Install precondition to run the rest of this script
 if ! command -v dialog; then
-  sudo pacman -Sy --noconfirm dialog
+  install_packages dialog
 fi
 
-## Ask the user for input which groups he wants to install
+## Ask the user for input which groups he or she wants to install
 tempfile=/tmp/dialog-$$
 dialog --separate-output --checklist "Select which groups you want to install:" 22 76 16 \
 1 "Base" off \
-2 "Tiling" off \
-3 "GNOME" off \
-4 "Setup src folders" off \
-5 "Development" off \
-6 "Work" off \
-7 "Dotfiles" off 2> $tempfile
+2 "UI" off \
+3 "Setup src folders" off \
+4 "Development" off \
+5 "Work" off \
+6 "Dotfiles" off \
+7 "Enable Network Manager" off 2> $tempfile
 clear
 
 choices=`cat $tempfile`
@@ -175,27 +155,24 @@ for i in $choices; do
         ;;
     2)
         setup_pre_conditions
-        setup_ui_base
-        setup_ui_tiling
+        setup_ui
         ;;
     3)
-        setup_pre_conditions
-        setup_ui_base
-        setup_ui_gnome
-        ;;
-    4)
         setup_src_folders
         ;;
-    5)
+    4)
         setup_pre_conditions
         setup_development
         ;;
-    6)
+    5)
         setup_pre_conditions
         setup_work
         ;;
-    7)
+    6)
         setup_dotfiles
+        ;;
+    7)
+        setup_nm
         ;;
   esac
 done

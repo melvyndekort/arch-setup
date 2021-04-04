@@ -1,3 +1,0 @@
-gnome
-gnome-shell-extension-topicons-plus
-gnome-tweaks

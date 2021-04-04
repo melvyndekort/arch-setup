@@ -1,0 +1,33 @@
+pkgname=xorg-mdekort
+pkgver=0d5a857
+pkgrel=1
+pkgdesc="X11 configuration for mdekort systems"
+arch=('any')
+url="https://github.com/melvyndekort/arch-setup"
+license=('GPL')
+groups=()
+depends=('xorg-server')
+makedepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+source=('20-monitor.conf'
+        '30-touchpad.conf')
+noextract=()
+md5sums=('SKIP'
+         'SKIP')
+
+pkgver() {
+  git describe --tags || git rev-parse --short HEAD
+}
+
+package() {
+  msg "Creating folders..."
+  mkdir -p $pkgdir/etc/X11/xorg.conf.d
+
+  msg "Installing files..."
+  install -D -m644 $srcdir/* $pkgdir/etc/X11/xorg.conf.d/
+}

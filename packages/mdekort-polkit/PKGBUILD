@@ -1,0 +1,43 @@
+pkgname=mdekort-polkit
+pkgver=0d5a857
+pkgrel=1
+pkgdesc="Polkit configuration for mdekort systems"
+arch=('any')
+url="https://github.com/melvyndekort/arch-setup"
+license=('GPL')
+groups=()
+depends=('polkit'
+         'polkit-gnome')
+makedepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+source=('nl.mdekort.policy'
+        '00-vpn.rules'
+        '00-chvt.rules'
+        '00-java.rules')
+noextract=()
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
+
+pkgver() {
+  git describe --tags || git rev-parse --short HEAD
+}
+
+package() {
+  msg "Creating folders..."
+  mkdir -p $pkgdir/usr/share/polkit-1/actions
+  mkdir -p $pkgdir/etc/polkit-1/rules.d
+
+  msg "Setting permissions..."
+  chmod 750 $pkgdir/etc/polkit-1/rules.d
+
+  msg "Installing files..."
+  install -D -m644 $srcdir/*.policy $pkgdir/usr/share/polkit-1/actions/
+  install -D -m644 $srcdir/*.rules $pkgdir/etc/polkit-1/rules.d/
+}
