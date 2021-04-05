@@ -1,5 +1,5 @@
 pkgname=xorg-mdekort
-pkgver=0d5a857
+pkgver=1.0
 pkgrel=1
 pkgdesc="X11 configuration for mdekort systems"
 arch=('any')

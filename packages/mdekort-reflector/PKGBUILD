@@ -1,5 +1,5 @@
 pkgname=mdekort-reflector
-pkgver=0d5a857
+pkgver=1.0
 pkgrel=1
 pkgdesc="Reflector systemd config to autorun at startup"
 arch=('any')

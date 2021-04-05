@@ -1,5 +1,5 @@
 pkgname=mdekort-polkit
-pkgver=0d5a857
+pkgver=1.0
 pkgrel=1
 pkgdesc="Polkit configuration for mdekort systems"
 arch=('any')

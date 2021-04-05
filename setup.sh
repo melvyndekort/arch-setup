@@ -2,21 +2,13 @@
 
 set -e
 
-YAY='yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed -'
-
-## Build and install custom package
-build_and_install () {
-  makepkg -cCfi --noconfirm
-}
-
-## Install packages without confirmation
-install_packages () {
-  sudo pacman -Sy --noconfirm --needed $*
-}
+alias install_pacman='sudo pacman -Sy --noconfirm --needed $*'
+alias install_yay='yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed -'
+alias build_and_install='makepkg -cCfi --noconfirm'
 
 ## Configure all preconditions for further setups
 setup_pre_conditions() {
-  install_packages base-devel
+  install_pacman base-devel
 
   if ! command -v yay; then
     git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin.git
@@ -29,7 +21,7 @@ setup_pre_conditions() {
 
 ## Install all applications for a base CLI only system
 setup_base() {
-  $YAY < pkglist-base.txt
+  install_yay < pkglist-base.txt
   sudo systemctl daemon-reload
   sudo systemctl enable linux-modules-cleanup
 
@@ -46,13 +38,13 @@ setup_base() {
 
 ## Install all applications for development purposes
 setup_development() {
-  $YAY < pkglist-development.txt
+  install_yay < pkglist-development.txt
   pip install --upgrade --user -r pkglist-pip.txt
 }
 
 ## Install all applications for tiling window managers
 setup_ui() {
-  $YAY < pkglist-ui.txt
+  install_yay < pkglist-ui.txt
 
   (
     cd packages/xorg-mdekort
@@ -64,20 +56,20 @@ setup_ui() {
 setup_src_folders() {
   cd $HOME/src
 
-  [ ! -d 'arch-setup' ] && git clone -q git@github.com:melvyndekort/arch-setup.git
-  [ ! -d 'aws-mdekort' ] && git clone -q git@github.com:melvyndekort/aws-mdekort.git
-  [ ! -d 'cheatsheets' ] && git clone -q git@github.com:melvyndekort/cheatsheets.git
-  [ ! -d 'lmserver' ] && git clone -q git@github.com:melvyndekort/lmserver.git
-  [ ! -d 'melvyndekort.github.io' ] && git clone -q git@github.com:melvyndekort/melvyndekort.github.io.git
-  [ ! -d 'pihole' ] && git clone -q git@github.com:melvyndekort/pihole.git
-  [ ! -d 'scheduler' ] && git clone -q git@github.com:melvyndekort/scheduler.git
+  [ -d 'arch-setup' ] || git clone -q git@github.com:melvyndekort/arch-setup.git
+  [ -d 'aws-mdekort' ] || git clone -q git@github.com:melvyndekort/aws-mdekort.git
+  [ -d 'cheatsheets' ] || git clone -q git@github.com:melvyndekort/cheatsheets.git
+  [ -d 'lmserver' ] || git clone -q git@github.com:melvyndekort/lmserver.git
+  [ -d 'melvyndekort.github.io' ] || git clone -q git@github.com:melvyndekort/melvyndekort.github.io.git
+  [ -d 'pihole' ] || git clone -q git@github.com:melvyndekort/pihole.git
+  [ -d 'scheduler' ] || git clone -q git@github.com:melvyndekort/scheduler.git
 
   cd -
 }
 
 ## Install all work related applications
 setup_work() {
-  $YAY < pkglist-work.txt
+  install_yay < pkglist-work.txt
 
   sudo systemctl enable displaylink.service
   sudo sed -i 's/^load-module module-suspend-on-idle/#load-module module-suspend-on-idle/' /etc/pulse/default.pa
@@ -131,7 +123,7 @@ setup_nm() {
 
 ## Install precondition to run the rest of this script
 if ! command -v dialog; then
-  install_packages dialog
+  install_pacman dialog
 fi
 
 ## Ask the user for input which groups he or she wants to install
