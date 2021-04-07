@@ -1,6 +1,6 @@
 ant
+evdi-git
 displaylink
-evdi
 linux-headers
 forticlientsslvpn
 jxplorer
