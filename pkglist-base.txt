@@ -110,6 +110,7 @@ unzip
 usbutils
 watchexec
 wget
+wol
 wpa_supplicant
 xclip
 xorg-xauth
