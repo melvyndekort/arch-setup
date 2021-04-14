@@ -1,3 +1,4 @@
+cryptography==3.3.2
 aws-encryption-sdk-cli
 awsume
 awsume-console-plugin
