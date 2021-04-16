@@ -2,8 +2,8 @@
 
 set -e
 
-alias install_pacman='sudo pacman -Sy --noconfirm --needed $*'
-alias install_yay='yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed -'
+alias install_pacman='sudo pacman -Sy --noconfirm --needed'
+alias install_yay='yay -Sy --sudoloop --answerclean No --nodiffmenu --noeditmenu --noupgrademenu --removemake --noconfirm --needed'
 alias build_and_install='makepkg -cCfi --noconfirm'
 
 ## Configure all preconditions for further setups
