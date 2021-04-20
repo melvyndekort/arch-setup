@@ -24,7 +24,10 @@ setup_base() {
   install_yay < pkglist-base.txt
   sudo systemctl daemon-reload
   sudo systemctl enable linux-modules-cleanup
+}
 
+## Install or upgrade all custom packages
+setup_custom_packages() {
   (
     cd packages/mdekort-reflector
     build_and_install
@@ -135,7 +138,8 @@ dialog --separate-output --checklist "Select which groups you want to install:" 
 4 "Development" off \
 5 "Work" off \
 6 "Dotfiles" off \
-7 "Enable Network Manager" off 2> $tempfile
+7 "Enable Network Manager" off \
+8 "Upgrade custom packages" off 2> $tempfile
 clear
 
 choices=`cat $tempfile`
@@ -144,6 +148,7 @@ for i in $choices; do
     1)
         setup_pre_conditions
         setup_base
+        setup_custom_packages
         ;;
     2)
         setup_pre_conditions
@@ -165,6 +170,9 @@ for i in $choices; do
         ;;
     7)
         setup_nm
+        ;;
+    8)
+        setup_custom_packages
         ;;
   esac
 done
