@@ -20,7 +20,7 @@ md5sums=('SKIP')
 install="$pkgname.install"
 
 pkgver() {
-  git describe --tags || git rev-parse --short HEAD
+  git describe --tags --always
 }
 
 package() {
