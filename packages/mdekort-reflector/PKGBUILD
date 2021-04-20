@@ -1,5 +1,5 @@
 pkgname=mdekort-reflector
-pkgver=1.0
+pkgver=1.1_2_g084b316
 pkgrel=1
 pkgdesc="Reflector systemd config to autorun at startup"
 arch=('any')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 install="$pkgname.install"
 
 pkgver() {
-  git describe --tags --always
+  git describe --tags --always | tr '-' '_'
 }
 
 package() {

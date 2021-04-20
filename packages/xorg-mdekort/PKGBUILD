@@ -21,7 +21,7 @@ md5sums=('SKIP'
          'SKIP')
 
 pkgver() {
-  git describe --tags --always
+  git describe --tags --always | tr '-' '_'
 }
 
 package() {
