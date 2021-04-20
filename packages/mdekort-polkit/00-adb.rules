@@ -1,0 +1,11 @@
+//
+// Allow admin users to switch JAVA version system-wide without authentication
+//
+polkit.addRule(function(action, subject) {
+  if (action.id == "nl.mdekort.adb" &&
+    subject.isInGroup("wheel")) {
+    polkit.log("action=" + action);
+    polkit.log("subject=" + subject);
+    return polkit.Result.YES;
+  }
+});

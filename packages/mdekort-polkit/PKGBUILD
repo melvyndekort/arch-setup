@@ -1,5 +1,5 @@
 pkgname=mdekort-polkit
-pkgver=1.1_2_g084b316
+pkgver=1.1_3_g619e044
 pkgrel=1
 pkgdesc="Polkit configuration for mdekort systems"
 arch=('any')
@@ -17,10 +17,12 @@ backup=()
 options=()
 source=('nl.mdekort.policy'
         '00-vpn.rules'
+        '00-adb.rules'
         '00-chvt.rules'
         '00-java.rules')
 noextract=()
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')

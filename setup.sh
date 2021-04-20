@@ -24,19 +24,17 @@ setup_base() {
   install_yay < pkglist-base.txt
   sudo systemctl daemon-reload
   sudo systemctl enable linux-modules-cleanup
-}
 
-## Install or upgrade all custom packages
-setup_custom_packages() {
   (
     cd packages/mdekort-reflector
     build_and_install
   )
+}
 
-  (
-    cd packages/mdekort-polkit
-    build_and_install
-  )
+## Install or upgrade custom polkit setup
+setup_polkit() {
+  cd packages/mdekort-polkit
+  build_and_install
 }
 
 ## Install all applications for development purposes
@@ -139,7 +137,7 @@ dialog --separate-output --checklist "Select which groups you want to install:" 
 5 "Work" off \
 6 "Dotfiles" off \
 7 "Enable Network Manager" off \
-8 "Upgrade custom packages" off 2> $tempfile
+8 "Upgrade custom polkit setup" off 2> $tempfile
 clear
 
 choices=`cat $tempfile`
@@ -148,7 +146,7 @@ for i in $choices; do
     1)
         setup_pre_conditions
         setup_base
-        setup_custom_packages
+        setup_polkit
         ;;
     2)
         setup_pre_conditions
@@ -172,7 +170,7 @@ for i in $choices; do
         setup_nm
         ;;
     8)
-        setup_custom_packages
+        setup_polkit
         ;;
   esac
 done
