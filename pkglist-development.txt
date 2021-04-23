@@ -1,4 +1,4 @@
-aws-cli
+aws-cli-v2-bin
 aws-ecs-cli
 aws-sam-cli
 aws-session-manager-plugin
