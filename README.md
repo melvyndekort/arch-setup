@@ -216,7 +216,7 @@ user = "root"
 group = "root"
 dynamic_ownership = 0
 
-usermod -a -G libvirt,docker,kvm melvyn
+usermod -a -G libvirt,docker,kvm,tfenv melvyn
 systemctl enable docker
 systemctl enable libvirtd
 

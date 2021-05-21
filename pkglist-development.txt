@@ -11,7 +11,7 @@ maven
 ngrok
 postman-bin
 python-pylint
-terraform
+tfenv
 tflint-bin
 vscodium-bin
 yamllint
