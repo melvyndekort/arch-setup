@@ -28,6 +28,18 @@
     <annotate key="org.freedesktop.policykit.exec.allow_gui">false</annotate>
   </action>
 
+  <action id="nl.mdekort.wireguard">
+    <message>Authentication is required to manage a WireGuard VPN connection</message>
+    <icon_name>network-vpn</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/wg-quick</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">false</annotate>
+  </action>
+
   <action id="nl.mdekort.forticlientsslvpn_cli">
     <message>Authentication is required to manage an SSL VPN connection</message>
     <icon_name>network-vpn</icon_name>
