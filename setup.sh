@@ -93,7 +93,7 @@ setup_dotfiles() {
     gpg --import
 
     if [ $? -eq 0 ]; then
-        break
+      break
     fi
 
     echo "Failed, try again..."
@@ -144,34 +144,34 @@ choices=`cat $tempfile`
 for i in $choices; do
   case $i in
     1)
-        setup_pre_conditions
-        setup_base
-        setup_polkit
-        ;;
+      setup_pre_conditions
+      setup_base
+      setup_polkit
+      ;;
     2)
-        setup_pre_conditions
-        setup_ui
-        ;;
+      setup_pre_conditions
+      setup_ui
+      ;;
     3)
-        setup_src_folders
-        ;;
+      setup_src_folders
+      ;;
     4)
-        setup_pre_conditions
-        setup_development
-        ;;
+      setup_pre_conditions
+      setup_development
+      ;;
     5)
-        setup_pre_conditions
-        setup_work
-        ;;
+      setup_pre_conditions
+      setup_work
+      ;;
     6)
-        setup_dotfiles
-        ;;
+      setup_dotfiles
+      ;;
     7)
-        setup_nm
-        ;;
+      setup_nm
+      ;;
     8)
-        setup_polkit
-        ;;
+      setup_polkit
+      ;;
   esac
 done
 rm -f $tempfile
