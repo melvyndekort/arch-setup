@@ -34,6 +34,7 @@ noto-fonts-emoji
 papirus-icon-theme
 pass-clip
 pavucontrol
+perl-anyevent-i3
 picom
 polkit-gnome
 pulseaudio
