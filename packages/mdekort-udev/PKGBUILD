@@ -1,5 +1,5 @@
 pkgname=mdekort-udev
-pkgver=1.2_5_gce7c428
+pkgver=1.2_6_g139a4ef
 pkgrel=1
 pkgdesc="Custom UDEV rules"
 arch=('any')
