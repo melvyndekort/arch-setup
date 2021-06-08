@@ -1,0 +1,22 @@
+pkgname=mdekort-udev
+pkgver=1.2_5_gce7c428
+pkgrel=1
+pkgdesc="Custom UDEV rules"
+arch=('any')
+url="https://github.com/melvyndekort/arch-setup"
+license=('GPL')
+depends=('udev')
+source=('99-lowbat.rules')
+md5sums=('SKIP')
+
+pkgver() {
+  git describe --tags --always | tr '-' '_'
+}
+
+package() {
+  msg "Creating folders..."
+  mkdir -p $pkgdir/etc/udev/rules.d
+
+  msg "Installing files..."
+  install -D -m644 $srcdir/* $pkgdir/etc/udev/rules.d/
+}

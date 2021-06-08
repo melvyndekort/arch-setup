@@ -29,6 +29,11 @@ setup_base() {
     cd packages/mdekort-reflector
     build_and_install
   )
+
+  (
+    cd packages/mdekort-udev
+    build_and_install
+  )
 }
 
 ## Install or upgrade custom polkit setup
