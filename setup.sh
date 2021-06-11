@@ -81,6 +81,11 @@ setup_work() {
   sudo sed -i 's/^load-module module-suspend-on-idle/#load-module module-suspend-on-idle/' /etc/pulse/default.pa
   systemctl --user daemon-reload
   systemctl --user restart pulseaudio.service
+
+  (
+    cd packages/portbase-dock
+    build_and_install
+  )
 }
 
 ## Configure managed dotfiles

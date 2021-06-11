@@ -1,0 +1,27 @@
+pkgname=portbase-dock
+pkgver=1.2_7_g1d95125
+pkgrel=1
+pkgdesc="Portbase docking station configuration"
+arch=('any')
+url="https://github.com/melvyndekort/arch-setup"
+license=('GPL')
+depends=('udev'
+         'xorg-server')
+source=('21-displaylink.conf'
+        'evdi.conf')
+md5sums=('SKIP'
+         'SKIP')
+
+pkgver() {
+  git describe --tags --always | tr '-' '_'
+}
+
+package() {
+  msg "Creating folders..."
+  mkdir -p $pkgdir/usr/share/X11/xorg.conf.d
+  mkdir -p $pkgdir/etc/modprobe.d
+
+  msg "Installing files..."
+  install -D -m644 $srcdir/21-displaylink.conf $pkgdir/usr/share/X11/xorg.conf.d/
+  install -D -m644 $srcdir/evdi.conf $pkgdir/etc/modprobe.d/
+}
