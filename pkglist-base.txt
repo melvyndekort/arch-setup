@@ -45,6 +45,7 @@ iftop
 inetutils
 iotop
 iptables
+irssi
 jq
 jre-openjdk
 kernel-modules-hook
