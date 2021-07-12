@@ -47,7 +47,6 @@ scrcpy
 screenfetch
 shotgun
 slack-desktop
-sublime-text-dev
 surf
 sxhkd
 sxiv
